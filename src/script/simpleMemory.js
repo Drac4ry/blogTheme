@@ -276,7 +276,7 @@ function init() {
     var url = window.location.href,tmp = [];
     tmp = url.split("/");
     var user = tmp[3];
-    var navListHtml = '<li><a href="" /*浅草才能没马蹄*/>万丈高楼平地起</a></li>' +
+    var navListHtml = '<li><a href="" <!--浅草才能没马蹄-->>万丈高楼平地起</a></li>' +
         '<li><a href="https://www.cnblogs.com/'+user+'/" target="_self">首页</a></li>' +
         '<li><a href="https://msg.cnblogs.com/send/'+user+'" target="_blank">联系</a></li>' +
         '<li><a href="https://i.cnblogs.com/" target="_blank">管理</a></li>';
