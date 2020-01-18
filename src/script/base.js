@@ -664,7 +664,7 @@ function Base() {
             });
 
             $('.footer-image').css({
-                'background': 'url(https://gitee.com/dbnuo/Cnblogs-Theme-SimpleMemory/raw/master/img/footer.png) no-repeat 50%',
+                'background': 'url(https://cdn.jsdelivr.net/gh/Drac4ry/blogTheme@2.6.2/img/footer.png) no-repeat 50%',
                 'height': '368px',
                 'z-index': '1',
                 'position': 'absolute',
