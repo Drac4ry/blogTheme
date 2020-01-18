@@ -1,8 +1,3 @@
-/*!
- * UPDATES AND DOCS AT: https://github.com/BNDong
- * https://www.cnblogs.com/bndong/
- * @author: BNDong, dbnuo@foxmail.com
- **/
 if (initCheck()) {
     var sidebarHtml =
         '<div class="container">' +
@@ -12,12 +7,11 @@ if (initCheck()) {
         '            <div class="introduce-box">' +
         '                <div class="introduce-head">' +
         '                    <div class="introduce-via" id="menuBlogAvatar"></div>' +
-        '                </div>' + '</br>' + '</br>' + '</br>' + '</br>' + '</br>' + '</br>' +
         '             </div>' +
         '            <!-- 导航 -->' +
-        '            <div class="nav-title"></div>' +
+        '            <div class="nav-title"></div>' + 
         '            <div class="icon-list">' +
-        '                <ul id="m-nav-list">' +
+        '                <ul id="m-nav-list">' + '</br>' + '</br>' +'</br>' + '</br>' +'</br>' + '</br>' +'</br>' + 
         '                </ul>' +
         '            </div>' +
         '            <!-- 日历 -->' +
@@ -87,13 +81,13 @@ if (initCheck()) {
         '<div id="rightMenu"></div>';
 
     window.cnblogsConfigDefault = {
-        GhUserName: 'BNDong',
-        GhRepositories: 'Cnblogs-Theme-SimpleMemory',
-        GhVersions: 'v1.1.2',
+        GhUserName: '',
+        GhRepositories: '',
+        GhVersions: '',
         CnVersions: "",
         blogUser: "",
         blogAvatar: "",
-        blogStartDate: "2019-01-01",
+        blogStartDate: "",
         menuCustomList: {},
         menuNavList: [],
         menuUserInfoBgImg: '',
@@ -228,14 +222,14 @@ function initCheck() {
 function getVersionConfig() {
 
     window.cnblogsConfig.CnVersions = window.cnblogsConfig.GhVersions;
-    if (window.cnblogsConfig.GhUserName === 'BNDong') {
+    if (window.cnblogsConfig.GhUserName === 'Drac4ry') {
 
-        $.getScript('https://gitee.com/dbnuo/Cnblogs-Theme-SimpleMemory/raw/master/version.js', function () {
+        $.getScript('https://cdn.jsdelivr.net/gh/Drac4ry/blogTheme@2.6.0/version.conf', function () {
             setConfVersion();
         });
 
     } else {
-        var url = 'https://cdn.jsdelivr.net/gh/Drac4ry/blogTheme@2.6.0/version.conf';
+        var url = 'https://gitee.com/dbnuo/Cnblogs-Theme-SimpleMemory/raw/master/version.js';
 
         $.ajax({
             type: "get",
@@ -282,7 +276,7 @@ function init() {
     var url = window.location.href,tmp = [];
     tmp = url.split("/");
     var user = tmp[3];
-    var navListHtml = '<li><a href="https://cdn.jsdelivr.net/gh/Drac4ry/blogTheme@2.6.0/src/script/flag.html" target="_blank">万丈高楼平地起</a></li>' +
+    var navListHtml = '<li><a href="" /*浅草才能没马蹄*/>万丈高楼平地起</a></li>' +
         '<li><a href="https://www.cnblogs.com/'+user+'/" target="_self">首页</a></li>' +
         '<li><a href="https://msg.cnblogs.com/send/'+user+'" target="_blank">联系</a></li>' +
         '<li><a href="https://i.cnblogs.com/" target="_blank">管理</a></li>';

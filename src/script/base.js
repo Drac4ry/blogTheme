@@ -1,9 +1,3 @@
-/*!
- * DATE: 2018-03-13
- * UPDATES AND DOCS AT: https://github.com/BNDong
- * https://www.cnblogs.com/bndong/
- * @author: BNDong, dbnuo@foxmail.com
- **/
 function Base() {
 
     const bndongJs    = this,
@@ -391,7 +385,7 @@ function Base() {
      * 设置菜单数据
      */
     this.setMenuData = function() {
-            //introduceHtml      = $('#profile_block').html(),        // 个人信息
+          //introduceHtml      = $('#profile_block').html(),        // 个人信息
         var calendar           = $('#blog-calendar'),               // 日历
             calendarTable      = $('#blogCalendar'),                // 日历
             sidebarSearch      = $('#sidebar_search_box'),          // 找找看
@@ -418,12 +412,12 @@ function Base() {
             menuRecentComments = $('#sb-recentComments');
 
         // 添加个人信息
-        // function setIntroduce() {
-        //     if ((typeof introduceHtml == 'string') && menuIntroduce.html() === '') {
-        //         menuIntroduce.html(tools.htmlFiltrationScript(introduceHtml));
-        //         bndongJs.clearIntervalTimeId(timeIds.setMenuIntroduceTId);
-        //     }
-        // }
+        function setIntroduce() {
+            if ((typeof introduceHtml == 'string') && menuIntroduce.html() === '') {
+                menuIntroduce.html(tools.htmlFiltrationScript(introduceHtml));
+                bndongJs.clearIntervalTimeId(timeIds.setMenuIntroduceTId);
+            }
+        }
 
         // 添加日历
         function setCalendar() {
