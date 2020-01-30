@@ -222,14 +222,14 @@ function initCheck() {
 function getVersionConfig() {
 
     window.cnblogsConfig.CnVersions = window.cnblogsConfig.GhVersions;
-    if (window.cnblogsConfig.GhUserName === 'Drac4ry') {
+    if (window.cnblogsConfig.GhUserName === 'BNDong') {
 
-        $.getScript('https://cdn.jsdelivr.net/gh/Drac4ry/blogTheme@2.6.0/version.conf', function () {
+        $.getScript('https://gitee.com/dbnuo/Cnblogs-Theme-SimpleMemory/raw/master/version.js', function () {
             setConfVersion();
         });
 
     } else {
-        var url = 'https://gitee.com/dbnuo/Cnblogs-Theme-SimpleMemory/raw/master/version.js';
+        var url = 'https://cdn.jsdelivr.net/gh/Drac4ry/blogTheme@2.6.0/version.conf';
 
         $.ajax({
             type: "get",
@@ -276,7 +276,7 @@ function init() {
     var url = window.location.href,tmp = [];
     tmp = url.split("/");
     var user = tmp[3];
-    var navListHtml = '<li><a href="#" "浅草才能没马蹄">万丈高楼平地起</a></li>' +
+    var navListHtml = '<li><a href="#" flag=朝阳之下遍危机>万丈高楼平地起</a></li>' +
         '<li><a href="https://www.cnblogs.com/'+user+'/" target="_self">首页</a></li>' +
         '<li><a href="https://msg.cnblogs.com/send/'+user+'" target="_blank">联系</a></li>' +
         '<li><a href="https://i.cnblogs.com/" target="_blank">管理</a></li>';
