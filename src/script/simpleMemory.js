@@ -1,4 +1,5 @@
 if (initCheck()) {
+
     var sidebarHtml =
         '<div class="container">' +
         '    <div class="menu-wrap optiscroll" id="menuWrap" style="display:none">' +
@@ -7,12 +8,11 @@ if (initCheck()) {
         '            <div class="introduce-box">' +
         '                <div class="introduce-head">' +
         '                    <div class="introduce-via" id="menuBlogAvatar"></div>' +
-        '             </div>' +
+        '                </div>' +
         '            <!-- 导航 -->' +
-        '            <div class="nav-title"></div>' + 
         '            <div class="icon-list">' +
-        '                <ul id="m-nav-list">' + '</br>' + '</br>' +'</br>' + '</br>' +'</br>' + '</br>' +'</br>' + 
-        '                </ul>' +
+        '            <ul id="m-nav-list">' + '</br>' + '</br>' +'</br>' + '</br>' +'</br>' + '</br>' +'</br>' + 
+        '            </ul>' +
         '            </div>' +
         '            <!-- 日历 -->' +
         '            <span id="calendar-box"></span>' +
@@ -31,6 +31,9 @@ if (initCheck()) {
         '            <!-- 随笔分类 -->' +
         '            <div class="m-list-title"><span>随笔分类<span class="iconfont icon-select m-list-title-select"></span></span></div>' +
         '            <div class="m-icon-list" id="sb-classify"></div>' +
+        '            <!-- 文章分类 -->' +
+        '            <div class="m-list-title"><span>文章分类<span class="iconfont icon-select m-list-title-select"></span></span></div>' +
+        '            <div class="m-icon-list" id="sb-ArticleCategory"></div>' +
         '            <!-- 阅读排行 -->' +
         '            <div class="m-list-title"><span>阅读排行<span class="iconfont icon-select m-list-title-select"></span></span></div>' +
         '            <div class="m-icon-list" id="sb-topview"></div>' +
@@ -63,8 +66,7 @@ if (initCheck()) {
         '    <canvas id="notHomeTopCanvas"></canvas>' +
         '    <div class="vertical">' +
         '        <div class="main-header-content inner">' +
-        '            <link href="https://fonts.proxy.ustclug.org/css?family=Playball" rel="stylesheet">' +
-        '            <h1 class="page-title" style="font-family: \'Playball\', cursive;" id="homeTopTitle"></h1>' +
+        '            <h1 class="page-title" id="homeTopTitle"></h1>' +
         '            <h2 class="page-description" id="hitokoto"></h2>' +
         '            <h3 class="page-author" id="hitokotoAuthor"></h3>' +
         '            <h1 class="sb-title" id="sbTitle"></h1>' +
@@ -142,6 +144,7 @@ if (initCheck()) {
             trailMaxLength: 30,
             trailIntervalCreation: 100,
             delayBeforeDisappear: 2,
+            colorsRandom: false,
             colors: [
                 '#96EDA6', '#5BC6A9',
                 '#38668C', '#374D84',
@@ -163,15 +166,21 @@ if (initCheck()) {
             animateSections: true
         },
         homeTopImg: [
-            "https://gitee.com/dbnuo/Cnblogs-Theme-SimpleMemory/raw/master/img/home_top_bg.jpg"
+            "https://cdn.jsdelivr.net/gh/BNDong/Cnblogs-Theme-SimpleMemory@master/img/webp/home_top_bg.webp"
         ],
         homeBannerText: "",
         homeBannerTextType: "jinrishici",
         essayTopImg: [
-            "https://gitee.com/dbnuo/Cnblogs-Theme-SimpleMemory/raw/master/img/nothome_top_bg.jpg"
+            "https://cdn.jsdelivr.net/gh/BNDong/Cnblogs-Theme-SimpleMemory@master/img/webp/nothome_top_bg.webp"
         ],
         essayCodeHighlightingType: 'cnblogs',
         essayCodeHighlighting: '',
+        essayCode: {
+            fontFamily: "'Ubuntu Mono',monospace",
+            fontSize: "14px",
+        },
+        codeMaxHeight: false,
+        codeLineNumber: false,
         essaySuffix: {
             codeImgUrl: '',
             aboutHtml: '',
@@ -180,14 +189,33 @@ if (initCheck()) {
         },
         bottomBlogroll: [],
         bottomText: {
-            icon: "❤️",
+            iconFont: {
+                icon:  "icon-xl",
+                color: "blue",
+                fontSize: "16px"
+            },
             left: "",
-            right: ""
+            right: "",
         },
         footerStyle: 2,
         consoleList: [],
         bookList: [],
         themeAuthor: false,
+        isVersionMapping: false,
+        switchDayNight: {
+            enable: true,
+            auto: {
+                enable: false,
+                dayHour: 5,
+                nightHour: 19
+            }
+        },
+        reward: {
+            enable: false,
+            wechatpay: '',
+            alipay: ''
+        },
+        advertising: true,
     };
 
     window.cnblogsConfig = $.extend( true, window.cnblogsConfigDefault, window.cnblogsConfig );
@@ -196,11 +224,7 @@ if (initCheck()) {
 } else {
 
     $('a[name="top"]').text("SimpleMemory：基础配置有误，请阅读文档，检查配置！").css({
-        'display': 'block',
-        'text-align': 'center',
-        'padding-top': '45vh',
-        'font-size': '20px',
-        'color': '#333'
+        'display': 'block', 'text-align': 'center', 'padding-top': '45vh', 'font-size': '20px', 'color': '#333'
     });
 }
 
@@ -222,13 +246,8 @@ function initCheck() {
 function getVersionConfig() {
 
     window.cnblogsConfig.CnVersions = window.cnblogsConfig.GhVersions;
-    if (window.cnblogsConfig.GhUserName === 'BNDong') {
 
-        $.getScript('https://gitee.com/dbnuo/Cnblogs-Theme-SimpleMemory/raw/master/version.js', function () {
-            setConfVersion();
-        });
-
-    } else {
+    if (window.cnblogsConfig.isVersionMapping) {
         var url = 'https://cdn.jsdelivr.net/gh/Drac4ry/blogTheme@2.6.0/version.conf';
 
         $.ajax({
@@ -242,6 +261,42 @@ function getVersionConfig() {
                 window.themeVersion && setConfVersion();
             }
         });
+
+    } else if(window.cnblogsConfig.GhUserName === 'BNDong') {
+        window.themeVersion = [
+            [
+                "v1.1.6",
+                "d8adfb50252062f658350bda29d7145f5eff0b80"
+            ]
+            ,
+            [
+                "v1.1.8",
+                "461aab69de17a84f0af9ff0c326bfcb94438b06c"
+            ]
+            ,
+            [
+                "v1.2.2",
+                "08eab99303d7c463a495adabd8feccc784a8507d"
+            ]
+            ,
+            [
+                "v1.2.3",
+                "36901bf16e2aa3656d4e6f78d44486273b0b8972"
+            ]
+            ,
+            [
+                "v1.2.4",
+                "9354db2147c11fc56cfe02a502f1f8229332fc2f"
+            ]
+            ,
+            [
+                "v1.2.5",
+                "4d744f980758500078df349520472e3b360fb841"
+            ]
+        ];
+        setConfVersion();
+    } else {
+        init();
     }
 
     function setConfVersion() {
