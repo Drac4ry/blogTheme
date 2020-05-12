@@ -188,12 +188,8 @@ if (initCheck()) {
             supportHtml: ''
         },
         bottomBlogroll: [],
-        bottomText: {
-            iconFont: {
-                icon:  "icon-xl",
-                color: "blue",
-                fontSize: "16px"
-            },
+         bottomText: {
+            icon: "❤️",
             left: "",
             right: "",
         },
