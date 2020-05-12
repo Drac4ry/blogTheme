@@ -190,9 +190,9 @@ if (initCheck()) {
         bottomBlogroll: [],
         bottomText: {
             iconFont: {
-                icon:  "",
+                icon:  "icon-xl",
                 color: "red",
-                fontSize: "15px"
+                fontSize: "16px"
             },
             left: "",
             right: "",
