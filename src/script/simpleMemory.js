@@ -192,7 +192,7 @@ if (initCheck()) {
             iconFont: {
                 icon:  "icon-xl",
                 color: "red",
-                fontSize: "14px"
+                fontSize: "16px"
             },
             left: "",
             right: "",
