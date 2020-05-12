@@ -190,7 +190,7 @@ if (initCheck()) {
         bottomBlogroll: [],
         bottomText: {
             iconFont: {
-                icon:  "❤️",
+                icon:  "ion-heart",
                 color: "red",
                 fontSize: "16px"
             },
